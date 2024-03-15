@@ -39,7 +39,9 @@ if not os.environ.get('READTHEDOCS', None) == 'True':
                         "nufft2df90.f",
                         "nufft3df90.f"]))
     sources += [os.path.join("nufft", "nufft.pyf")]
-    extensions = [Extension("nufft._nufft", sources=sources)]
+    extensions = [Extension("nufft._nufft",
+                            sources=sources,
+                            extra_f77_compile_args=["-fallow-argument-mismatch"])]
 
 setup(
     name="nufft",
